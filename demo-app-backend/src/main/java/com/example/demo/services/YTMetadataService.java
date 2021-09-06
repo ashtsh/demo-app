@@ -38,7 +38,7 @@ public class YTMetadataService {
 	}
 	
 	
-	//@Scheduled(fixedRate=11000)
+	@Scheduled(fixedRate=11000)
 	public void saveYTMetadata() {
 //		final String KEY = "AIzaSyBeYv6bUidkNFKviMKXcpwGDLiR3m6hlVg";
 		
