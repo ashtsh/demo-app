@@ -1,0 +1,97 @@
+body{
+  background: #eee;
+  padding-left:40px;
+  padding-right:40px;
+  font-family: 'Noto Sans', sans-serif;
+}
+table{
+  margin: 20px 0px;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 700;
+  border: 1px solid #333;
+  background-color: #fff;
+  width: 100%;
+  text-align: center;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 15px 15px 15px 15px;
+  overflow: hidden;
+}
+
+table thead {
+  background-color: #333;
+  font-size: 2rem;
+  color: #fff;
+  letter-spacing: .3rem;
+}
+
+table td, table th {
+  border-bottom: 1px solid #333;
+  height: 80px;
+  
+  vertical-align: middle;
+}
+
+table th{
+  height : 50px;
+}
+
+table thead th + th,
+table tbody td {
+  border-right: 1px solid #333;
+}
+
+table tbody td:nth-child(4){
+  border-right: none;
+}
+
+table tbody td:nth-child(1){
+  width:20%;
+}
+table tbody td:nth-child(2){
+  width:30%;
+}
+table tbody td:nth-child(3){
+  width:40%;
+}
+table tbody td:nth-child(4){
+  width:10%;
+}
+.page-list{
+  margin-left: 40%;
+}
+.page-list ul{
+  list-style: none;
+}
+.page-list li{
+  margin-right:15px;
+  display: inline;
+  font-size: 1.5em;
+}
+.page-list a{
+  text-decoration: none;
+  
+}
+.page-list .active{
+  list-style-position: inside;
+ 
+  border: 2px solid black;
+  color : white;
+}
+
+.search-form{
+  margin : 2% 35%;
+}
+
+tbody tr td img{
+  width:100%;
+}
+
+.home-div{
+  margin : 20% 40%;
+}
+
+.home-div li{
+  margin-bottom: 1rem;
+}
