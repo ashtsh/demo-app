@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.models.ApiKey;
 import com.example.demo.models.YoutubeMetadata;
+import com.example.demo.repositories.ApiKeyRepository;
 import com.example.demo.services.ApiKeyService;
 import com.example.demo.services.YTMetadataService;
 
@@ -28,6 +30,8 @@ public class YTController {
 	private YTMetadataService yt_service;
 	@Autowired
 	private ApiKeyService key_service;
+	@Autowired
+	private ApiKeyRepository repo;
 	
 	@GetMapping("/get")
 	public Page<YoutubeMetadata> getFirstPageData(){
@@ -38,6 +42,12 @@ public class YTController {
 		return yt_service.getYTMetadata(pageNo);
 	}
 	
+	@GetMapping("/test")
+	private void test() {
+		ApiKey a = new ApiKey();
+		a.setKey("hello world");
+		repo.save(a);
+	}
 	
 	@GetMapping("/add-key")
 	private void addApiKey(@RequestParam String key) {
