@@ -10,6 +10,7 @@ import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,7 @@ import com.example.demo.services.ApiKeyService;
 import com.example.demo.services.YTMetadataService;
 
 @RestController
+@CrossOrigin
 public class YTController {
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -34,6 +36,7 @@ public class YTController {
 	private ApiKeyRepository repo;
 	
 	@GetMapping("/get")
+	
 	public Page<YoutubeMetadata> getFirstPageData(){
 		return yt_service.getYTMetadata(0);
 	}

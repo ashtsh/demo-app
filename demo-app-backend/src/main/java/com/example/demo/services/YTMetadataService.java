@@ -58,7 +58,7 @@ public class YTMetadataService {
 			prevDateTime = currentDateTime.minusDays(1);
 	
 		final String YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/search?part=snippet"+
-									"&q=football&key="+KEY+
+									"&q=cricket&key="+KEY+
 									"&type=video&order=date&publishedAfter="+prevDateTime.toString()+"Z";
 		
 		System.out.println(prevDateTime+"-----");
