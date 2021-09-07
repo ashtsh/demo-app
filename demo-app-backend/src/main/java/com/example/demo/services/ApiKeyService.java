@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.models.ApiKey;
 import com.example.demo.repositories.ApiKeyRepository;
 
+//Service layer to recieve requests from controller and directs to jpa repository
+
 @Service
 public class ApiKeyService {
 	

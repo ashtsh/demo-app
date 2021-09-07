@@ -27,52 +27,43 @@ import com.example.demo.services.YTMetadataService;
 public class YTController {
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@Autowired
 	private YTMetadataService yt_service;
 	@Autowired
 	private ApiKeyService key_service;
 	@Autowired
 	private ApiKeyRepository repo;
-	
+
+	// Controller to display results of data in paginated way
 	@GetMapping("/get")
-	
-	public Page<YoutubeMetadata> getFirstPageData(){
+	public Page<YoutubeMetadata> getFirstPageData() {
 		return yt_service.getYTMetadata(0);
 	}
+
+	// Controller to serve the pagination
 	@GetMapping("/{pageNo}")
-	private Page<YoutubeMetadata> getNextPagesData(@PathVariable int pageNo){
+	private Page<YoutubeMetadata> getNextPagesData(@PathVariable int pageNo) {
 		return yt_service.getYTMetadata(pageNo);
 	}
-	
-	@GetMapping("/test")
-	private void test() {
-		ApiKey a = new ApiKey();
-		a.setKey("hello world");
-		repo.save(a);
-	}
-	
+
+	// Controller to add developer key
 	@GetMapping("/add-key")
 	private void addApiKey(@RequestParam String key) {
 		key_service.addNewKey(key);
 	}
-	
+
+	// Controller to search youtube videos on title and description
 	@GetMapping("/search")
-	private List<YoutubeMetadata> searchController(@RequestParam(name="query") String searchString) {
-		FullTextEntityManager fullTextEntityManager 
-		  = Search.getFullTextEntityManager(entityManager);
-		QueryBuilder queryBuilder = fullTextEntityManager.getSearchFactory() 
-				  .buildQueryBuilder()
-				  .forEntity(YoutubeMetadata.class)
-				  .get();
-		org.apache.lucene.search.Query query = queryBuilder
-				  .keyword()
-				  .onFields("title","description")
-				  .matching(searchString)
-				  .createQuery();
-		org.hibernate.search.jpa.FullTextQuery jpaQuery
-		  = fullTextEntityManager.createFullTextQuery(query, YoutubeMetadata.class);
+	private List<YoutubeMetadata> searchController(@RequestParam(name = "query") String searchString) {
+		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+		QueryBuilder queryBuilder = fullTextEntityManager.getSearchFactory().buildQueryBuilder()
+				.forEntity(YoutubeMetadata.class).get();
+		org.apache.lucene.search.Query query = queryBuilder.keyword().onFields("title", "description")
+				.matching(searchString).createQuery();
+		org.hibernate.search.jpa.FullTextQuery jpaQuery = fullTextEntityManager.createFullTextQuery(query,
+				YoutubeMetadata.class);
 		return jpaQuery.getResultList();
 	}
-	
+
 }

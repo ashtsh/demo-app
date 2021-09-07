@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//Api Key Data model form ORM
+
 @Entity
 @Table
 public class ApiKey {
@@ -13,14 +15,17 @@ public class ApiKey {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String apiKey;
+
 	public String getKey() {
 		return apiKey;
 	}
+
 	public void setKey(String key) {
 		apiKey = key;
 	}
+
 	public Long getId() {
 		return id;
 	}
-	
+
 }

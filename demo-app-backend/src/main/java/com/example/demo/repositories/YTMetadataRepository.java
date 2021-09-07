@@ -9,8 +9,13 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.example.demo.models.YoutubeMetadata;
 
-public interface YTMetadataRepository extends JpaRepository<YoutubeMetadata,Long> {
-	  //  @Query(value="select * from youtube_metadata order by publish_time desc",nativeQuery=true)
-		Page<YoutubeMetadata> findAllByOrderByPublishTimeDesc(Pageable page);
-		Optional<YoutubeMetadata> findById(String id);
+//JPA Repository to interact with Youtube Metadata databbase
+
+public interface YTMetadataRepository extends JpaRepository<YoutubeMetadata, Long> {
+
+	// Gets data in page of 5 records rather than all the results
+	@Query(value = "select * from youtube_metadata order by publish_time desc", nativeQuery = true)
+	Page<YoutubeMetadata> findAllByOrderByPublishTimeDesc(Pageable page);
+
+	Optional<YoutubeMetadata> findById(String id);
 }

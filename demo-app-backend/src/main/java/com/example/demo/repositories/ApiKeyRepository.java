@@ -5,7 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.example.demo.models.ApiKey;
 
-public interface ApiKeyRepository extends JpaRepository<ApiKey,Long>{
-		@Query(value="select * from api_key limit 1",nativeQuery=true)
-		ApiKey findAnyKey();
+// JPA Repository to interact with Api Key databbase
+public interface ApiKeyRepository extends JpaRepository<ApiKey, Long> {
+	@Query(value = "select * from api_key limit 1", nativeQuery = true)
+	ApiKey findAnyKey();
 }
