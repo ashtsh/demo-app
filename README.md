@@ -24,4 +24,5 @@
 ## How to run
 
  - Go to http://localhost:3000/
+ - Add developer key in the input box and click 'Add Key'
  - Backend APIs are available at `localhost:8080/get` and `localhost:8080/search`
