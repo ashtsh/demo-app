@@ -23,11 +23,12 @@ services:
       - 8080:8080
     depends_on:
       mysql_db:
-        condition: service_healthy	    
+        condition: service_healthy    
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3306/yt_metadata?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+      http.cors.allow-origin: http://localhost:3000,http://127.0.0.1:3000
 
   react_service:
     build:
