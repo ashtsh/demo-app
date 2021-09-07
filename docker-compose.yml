@@ -9,6 +9,11 @@ services:
     environment:
       MYSQL_DATABASE: yt_metadata
       MYSQL_ROOT_PASSWORD: root
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
 
   spring_api_service:
     build:
@@ -17,7 +22,8 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - mysql_db
+      mysql_db:
+        condition: service_healthy	    
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3306/yt_metadata?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
