@@ -3,7 +3,8 @@
 ## APIs
 
  - `/get` : Displays results fetched from api in descending order of publish time
- - `/search`: Displays search results queried on 'title' and 'description' field of video data
+ 	- `/get/{page_no}` shows the paginated response. `/get` shows first page by default
+ - `/search?query=`: Displays search results queried on 'title' and 'description' field of video data. query parameter takes the search string
 
 ## Features
 
